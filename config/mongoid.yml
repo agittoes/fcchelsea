@@ -1,0 +1,42 @@
+development:
+  sessions:
+    default:
+      database: fcchelsea_development
+      hosts:
+        - server:27017
+      options:
+        safe: true
+        consistency: :strong
+  options:
+    raise_not_found_error: false
+    use_activesupport_time_zone: false
+    use_utc: true
+
+test:
+  sessions:
+    default:
+      database: fcchelsea_test
+      hosts:
+        - server:27017
+      options:
+        consistency: :strong
+        max_retries: 1
+        retry_interval: 0
+  options:
+    raise_not_found_error: false
+    use_activesupport_time_zone: false
+    use_utc: true
+
+production:
+  sessions:
+    default:
+      database: fcchelsea
+      hosts:
+        - localhost:27017
+      options:
+        safe: true
+        consistency: :strong
+  options:
+    raise_not_found_error: false
+    use_activesupport_time_zone: false
+    use_utc: true
