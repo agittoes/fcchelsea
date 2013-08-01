@@ -28,8 +28,7 @@ gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext', '~> 1.8.6'
 
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
-
+gem 'twitter-bootstrap-rails', '2.2.7'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
