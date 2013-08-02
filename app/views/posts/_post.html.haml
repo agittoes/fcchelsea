@@ -1,0 +1,16 @@
+.post
+  .title
+    =link_to post.title, post
+  .image
+    =image_tag post.image
+  %p.text
+    -if defined? truncate_length
+      =truncate(post.text, length: truncate_length)
+      =link_to post, class: 'readmore' do
+        Read more
+    -else
+      =post.text
+
+  .ctrl
+    %span.date
+      =format_date(post.created_at)

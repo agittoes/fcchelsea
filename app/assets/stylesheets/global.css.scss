@@ -12,6 +12,8 @@ body {
   margin-top: 20px;
 
   .master-container-inner {
+    padding: 20px;
+
     background-color: $masterBgColor;
 
     border: 1px solid $masterBorderColor;
@@ -20,4 +22,40 @@ body {
 
     min-height: 200px;
   }
+}
+
+.standard-form {
+  input, textarea {
+    width: 100%;
+  }
+
+  textarea {
+    height: 30em;
+  }
+}
+
+h1 {
+  font-size: 2.2em;
+  font-weight: bold;
+
+  // TODO : Put into varible
+  color: #004fd1
+}
+
+h2 {
+
+  font-size: 1.8em;
+  font-weight: bold;
+
+  // TODO : Put into varible
+  color: #003fa6
+}
+
+h3 {
+
+  font-size: 1.4em;
+  font-weight: bold;
+
+  // TODO : Put into varible
+  color: #002557;
 }

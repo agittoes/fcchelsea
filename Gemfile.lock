@@ -180,6 +180,7 @@ GEM
       json (>= 1.1.3)
       rdoc (~> 3.10)
     sexp_processor (4.2.1)
+    simple-rss (1.2.3)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -241,6 +242,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
+  simple-rss
   therubyracer
   turbolinks
   twitter-bootstrap-rails (= 2.2.7)

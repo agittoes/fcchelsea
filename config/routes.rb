@@ -6,4 +6,7 @@ Fcchelsea::Application.routes.draw do
   delete '/signout', :to => 'sessions#destroy'
 
   resources :users
+  resources :posts do
+    resources :comments, :only => [:create, :update, :destroy]
+  end
 end

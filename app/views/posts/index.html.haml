@@ -1,0 +1,8 @@
+.row-fluid
+  .span8.content
+    .posts-feed
+      %h2
+        News
+      =render partial: 'posts/posts', :locals => {posts: @posts, truncate_length: 1200}
+
+  .span4.sidebar
