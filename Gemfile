@@ -30,6 +30,12 @@ gem 'bson_ext', '~> 1.8.6'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.7'
 
+gem 'omniauth-facebook', '~> 1.4.1'
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem "omniauth-vkontakte", "~> 1.2.0"
+gem 'omniauth-odnoklassniki', '~> 0.0.4'
+
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

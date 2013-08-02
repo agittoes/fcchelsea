@@ -1,5 +1,25 @@
+$pageBgColor: #002557;
+
+$masterBgColor: #FFFFFF;
+$masterBorderColor: darken($masterBgColor, 40%);
+$masterShadowColor: rgba(#000000, 0.8);
+
 body {
   padding: 60px 0 0 0;
 
-  background-color: #002557;
+  background-color: $pageBgColor;
+}
+
+.master-container {
+  margin-top: 20px;
+
+  .master-container-inner {
+    background-color: $masterBgColor;
+
+    border: 1px solid $masterBorderColor;
+    border-radius: 10px;
+    box-shadow: 0 0 20px $masterShadowColor;
+
+    min-height: 200px;
+  }
 }
