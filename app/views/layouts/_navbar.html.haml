@@ -1,13 +1,18 @@
 .navbar.navbar-fixed-top.main-nav-bar
   .navbar-inner
     .container
+      %a.btn.btn-navbar{:data=>{:toggle=>"collapse", :target=>".nav-collapse"}}
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+
       =link_to root_path, class: 'brand' do
         Home
 
       .nav-collapse.collapse
         %ul.nav
           %li
-            =link_to 'Login via Facebook', '/auth/facebook'
+            =link_to 'link1', '#'
           %li
             =link_to 'Link2', '#'
           %li
@@ -22,26 +27,5 @@
               =link_to 'Logout', signout_path, :method => :delete
           -else
             %li
-              =link_to '#' do
-                Registration
-
-            %li.dropdown
-              %a.dropdown-toggle{:data=>{:toggle=>'dropdown'}, :href=>'#'}
-                Sign in
-                %bb.caret
-              %ul.dropdown-menu.dropdown-signin-form
-                %li
-                  %p
-                    Enter you E-Mail and password to sign in to the system. Not a member?
-                    %a
-                      Register
-
-                  %form
-                    %fieldset
-                      %input.input-xlarge{:type=>:text, :placeholder=>'E-Mail'}
-                      %input.input-xlarge{:type=>:password, :placeholder=>'Password'}
-
-                    .btn-group
-                      %input.btn.btn-primary{:type=>:submit}
-                    .btn.btn-link
-                      Restore password
+              =link_to '/auth/facebook' do
+                Facebook
