@@ -7,8 +7,13 @@
       .title {
         font-size: 1.6em;
 
-        padding: 30px 0 20px 0;
+        padding: 30px 0 10px 0;
         font-weight: bold;
+      }
+
+      .date {
+        // TODO : Put into varible
+        color: #8c8c8c;
       }
 
       .image {
@@ -17,14 +22,15 @@
         height: $imageHeight;
         float: right;
 
+        margin-top: 15px;
         margin-left: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
 
         background-color: burlywood;
       }
 
       .text {
-        margin: 0 0 5px 0;
+        margin: 10px 0 5px 0;
         min-height: $imageHeight;
 
         text-indent: 1em;
@@ -37,14 +43,7 @@
         // TODO : Put into varible
         border-top: 1px solid #c4c4c4;
 
-        text-align: right;
-        .date {
-          // TODO : Put into varible
-          color: #8c8c8c;
-        }
 
-        .readmore {
-        }
       }
     }
   }
@@ -58,25 +57,30 @@
     .title {
       font-size: 1.8em;
 
-      padding: 30px 0 20px 0;
+      padding: 30px 0 10px 0;
       font-weight: bold;
+    }
+
+    .date {
+      // TODO : Put into varible
+      color: #8c8c8c;
     }
 
     .image {
       position: relative;
-      //width: $imageWidth;
+      width: $imageWidth;
       height: $imageHeight;
       //float: right;
 
       //margin-left: 20px;
-      margin-bottom: 20px;
-      text-align: center;
+      margin: 10px 0 10px 0;
+      //text-align: center;
 
       //background-color: burlywood;
     }
 
     .text {
-      margin: 0 0 5px 0;
+      margin: 10px 0 5px 0;
       //min-height: $imageHeight;
 
       text-indent: 1em;
@@ -87,11 +91,7 @@
       // TODO : Put into varible
       border-top: 1px solid #c4c4c4;
 
-      text-align: right;
-      .date {
-        // TODO : Put into varible
-        color: #8c8c8c;
-      }
+      padding-top: 6px;
 
       margin-bottom: 10px;
     }

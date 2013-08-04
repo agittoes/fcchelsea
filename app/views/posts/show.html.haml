@@ -1,7 +1,24 @@
 .row-fluid
   .span8.content
     .post-page
-      =render partial: 'posts/post', :locals => {post: @post}
+      .post
+        .title
+          =link_to @post.title, @post
+        .date
+          =format_date(@post.created_at)
+
+        .image
+          =image_tag @post.image.url, class: 'img-rounded'
+        %p.text
+          =@post.text
+
+        .ctrl
+          =link_to 'Edit', edit_post_path(@post), class: ['btn', 'btn-warning', 'btn-mini']
+          =link_to 'Delete', @post, :method => :delete, :confirm => "Are yu sure?", class: ['btn', 'btn-danger', 'btn-mini']
+
+
+      -#=link_to 'Edit', edit_post_path(@post), class: ['btn', 'btn-warning', 'btn-large']
+      -#=link_to 'Delete', @post, :method => :delete, :confirm => "Are yu sure?", class: ['btn', 'btn-danger', 'btn-large']
 
       .comments
         %h3

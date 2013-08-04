@@ -1,8 +1,10 @@
 .post
   .title
     =link_to post.title, post
+  .date
+    =format_date(post.created_at)
   .image
-    =image_tag post.image
+    =image_tag post.image.url(image_version), class: 'img-rounded'
   %p.text
     -if defined? truncate_length
       =truncate(post.text, length: truncate_length)
@@ -10,7 +12,4 @@
         Read more
     -else
       =post.text
-
   .ctrl
-    %span.date
-      =format_date(post.created_at)

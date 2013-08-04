@@ -7,7 +7,7 @@
     .sidebar-posts
       %h3
         News
-      =render partial: 'posts/posts', :locals => {posts: @last_posts, truncate_length: 300}
+      =render partial: 'posts/posts', :locals => {posts: @last_posts, truncate_length: 300, image_version: :sidebar}
 
   .span8.content
     %h2

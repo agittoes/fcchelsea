@@ -35,6 +35,9 @@ gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
 gem "omniauth-vkontakte", "~> 1.2.0"
 gem 'omniauth-odnoklassniki', '~> 0.0.4'
 
+gem 'carrierwave', '~> 0.9.0'
+gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
+gem 'mini_magick', '~> 3.6.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

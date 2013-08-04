@@ -9,9 +9,13 @@
         =f.text_field :title
 
         =f.label :image
-        =f.text_field :image
+        =f.file_field :image
+
+        =image_tag @post.image.url
+        =image_tag @post.image.url(:feed)
+        =image_tag @post.image.url(:sidebar)
 
         =f.label :text
         =f.text_area :text
 
-      =f.submit 'Create', class: ['btn', 'btn-primary', 'btn-large']
+      =f.submit 'Save', class: ['btn', 'btn-primary', 'btn-large']
