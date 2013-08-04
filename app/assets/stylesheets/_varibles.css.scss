@@ -1,0 +1,53 @@
+$color1: #0C0C0C;
+$color2: #2B2B2B;
+$color3: #112086;
+$color4: #172DC0;
+$color5: #FFFFFF;
+$color6: #cecece;
+
+$page-color: $color3;
+
+$block-color: $color5;
+$block-border-color: $color6;
+$block-shadow-color: $color2;
+
+$block-border: 1px solid $block-border-color;
+$block-shadow: 0 0 20px $block-shadow-color;
+
+$item-shadow-color: $color6;
+$box-shadow:  0 0 4px $item-shadow-color;
+$text-shadow: 1px 1px 2px $item-shadow-color;
+
+$item-boreder-radius: 6px;
+
+
+$general-font: normal 0.95em/1.1em sans-serif;
+//$large-font: bold 1.2em/1.6em sans-serif;
+//$huge-font: bold 2em/2.2em sans-serif;
+$small-font: normal 0.8em/1em sans-serif;
+
+$title-1-font: bold 2em/1.2em sans-serif;
+$title-2-font: bold 1.4em/1.2em sans-serif;
+$title-3-font: bold 1em/1.2em sans-serif;
+$title-4-font: bold 0.9em/1em sans-serif;
+
+$small-image-width: 80px;
+$small-image-height: 80px;
+
+$medium-image-width: 200px;
+$medium-image-height: 120px;
+
+$large-image-width: 700px;
+$large-image-height: 300px;
+
+
+@mixin block {
+  padding: 20px;
+
+  background-color: $block-color;
+
+  border: $block-border;
+  border-radius: 10px;
+
+  box-shadow: $block-shadow;
+}

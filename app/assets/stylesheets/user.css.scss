@@ -1,0 +1,26 @@
+@import "varibles.css.scss";
+
+.user-card {
+  .image {
+    position: relative;
+    float: left;
+
+    margin-right: 5px;
+
+    img {
+      border-radius: $item-boreder-radius;
+      box-shadow: $box-shadow;
+    }
+  }
+  .name {
+    display: inline-block;
+  }
+
+  .content {
+    font: $small-font;
+
+    .date {
+
+    }
+  }
+}

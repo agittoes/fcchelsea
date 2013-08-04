@@ -49,7 +49,8 @@ class PostsController < ApplicationController
     params.require(:post).permit(
         :title,
         :text,
-        :image
+        :image,
+        :remote_image_url
     )
   end
 end

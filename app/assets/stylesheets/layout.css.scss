@@ -1,0 +1,24 @@
+@import "varibles.css.scss";
+
+body {
+  background-color: $page-color;
+  font: $general-font;
+}
+
+.master-container {
+  margin-top: 20px;
+
+  .master-container-inner {
+    @include block;
+    min-height: 200px;
+  }
+
+  .footer {
+    margin-top: 10px;
+    min-height: 100px;
+
+    font: $small-font;
+    color: $block-color;
+  }
+}
+

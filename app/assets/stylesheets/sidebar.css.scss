@@ -1,0 +1,46 @@
+@import "varibles.css.scss";
+
+.sidebar {
+  font: $small-font;
+  .last-posts {
+    .post {
+      border-bottom: $block-border;
+      margin: 1em 0 1em 0;
+
+      .title {
+        margin-bottom: 2px;
+
+        font-size: 1.1em;
+        font-weight: bold;
+
+        text-shadow: $text-shadow;
+      }
+
+      .content {
+        margin-top: 6px;
+
+        .image {
+          position: relative;
+          float: left;
+          margin: 0 6px 1px 0;
+
+          box-shadow: $box-shadow;
+
+          img { border-radius: $item-boreder-radius; }
+        }
+        .text {
+          text-indent: 1em;
+          margin-bottom: 0.4em;
+        }
+      }
+
+      .date {
+        text-align: right;
+
+        font-style: italic;
+
+        color: $color2;
+      }
+    }
+  }
+}

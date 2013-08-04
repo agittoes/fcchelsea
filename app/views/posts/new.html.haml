@@ -10,6 +10,8 @@
 
         =f.label :image
         =f.file_field :image
+        =f.label :remote_image_url, 'Image URL'
+        =f.text_field :remote_image_url
 
         =image_tag @post.image.url
         =image_tag @post.image.url(:feed)

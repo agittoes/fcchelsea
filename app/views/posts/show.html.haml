@@ -1,51 +1,60 @@
 .row-fluid
-  .span8.content
+  .span8
     .post-page
       .post
         .title
-          =link_to @post.title, @post
+          =@post.title
+        .content
+          -if @post.image
+            .image
+              =image_tag @post.image.url
+          .text
+            =@post.text
         .date
           =format_date(@post.created_at)
 
-        .image
-          =image_tag @post.image.url, class: 'img-rounded'
-        %p.text
-          =@post.text
-
         .ctrl
-          =link_to 'Edit', edit_post_path(@post), class: ['btn', 'btn-warning', 'btn-mini']
-          =link_to 'Delete', @post, :method => :delete, :confirm => "Are yu sure?", class: ['btn', 'btn-danger', 'btn-mini']
+          =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
+            Edit Post
 
-
-      -#=link_to 'Edit', edit_post_path(@post), class: ['btn', 'btn-warning', 'btn-large']
-      -#=link_to 'Delete', @post, :method => :delete, :confirm => "Are yu sure?", class: ['btn', 'btn-danger', 'btn-large']
-
-      .comments
+      .comment-block
         %h3
           Comments
-        =form_for([@post, @comment]) do |f|
-          %fieldset.comment-form
-            =f.text_area :text
-          =f.submit 'Send', class: ['btn', 'btn-primary']
-
-        -@post.comments.each do |comment|
-          .row-fluid.comment{:id=>comment.id}
-            .span3.userinfo
+        .row-fluid
+          .span4
+            .user-card
               .image
-                =image_tag comment.user.image, class: 'img-rounded'
-
+                =image_tag signed_in_user.image
               .name
-                =comment.user.first_name
-                =comment.user.last_name
-
-              .date
-                =time_ago_in_words comment.created_at, include_seconds: true
-                ago
+                =signed_in_user.first_name
+                =signed_in_user.last_name
               .clearfix
 
-            .span9
-              %p.text
-                =comment.text
+          .span8
+            .comment-form
+              =form_for [@post, @comment] do |f|
+                %fieldset
+                  =f.text_area :text, class: 'span8', placeholder: 'Write comment text here'
+                =f.submit 'Write', class: ['span3', 'btn', 'btn-primary']
 
 
-  .span4.sidebar
+        .comments
+          -@post.comments.each do |comment|
+
+            .row-fluid.comment
+              .span4
+                .user-card
+                  .image
+                    =image_tag comment.user.image
+                  .name
+                    =comment.user.first_name
+                    =comment.user.last_name
+                  .content
+                    .date
+                      =time_ago_in_words(comment.created_at)
+                      ago
+                  .clearfix
+
+              .span8
+                .text
+                  =comment.text
