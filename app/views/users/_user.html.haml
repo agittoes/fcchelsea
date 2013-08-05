@@ -1,0 +1,9 @@
+.user-card
+  .image
+    =image_tag user.image
+  .name
+    =user.first_name
+    =user.last_name
+  .content
+    =yield if block_given?
+  .clearfix

@@ -7,6 +7,9 @@
 
     margin-right: 5px;
 
+    width: $avatar-width;
+    height: $avatar-height;
+
     img {
       border-radius: $item-boreder-radius;
       box-shadow: $box-shadow;
@@ -18,9 +21,5 @@
 
   .content {
     font: $small-font;
-
-    .date {
-
-    }
   }
 }

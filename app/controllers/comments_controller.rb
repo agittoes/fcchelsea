@@ -1,9 +1,18 @@
 class CommentsController < ApplicationController
+  before_action :target_post_required, :only => [:index, :create]
+  before_action :target_comment_required, :only => [:update, :destroy]
+
+
+  def index
+    @comments = @post.comments
+
+  end
+
   def create
     @post = Post.find(params[:post_id])
-    @post.comments.create(comment_params.merge!(:user => signed_in_user))
+    comment = @post.comments.create(comment_params.merge!(:user => signed_in_user))
 
-    redirect_to @post
+    redirect_to(post_path(@post) + "#comment-#{comment.id}")
   end
 
   def update
@@ -13,6 +22,15 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def target_post_required
+    @post = Post.find(params[:post_id])
+  end
+
+  def target_comment_required
+    @comment = Comment.find(params[:id])
+  end
+
 
   def comment_params
     params.require(:comment).permit(:text)

@@ -20,41 +20,10 @@
       .comment-block
         %h3
           Comments
-        .row-fluid
-          .span4
-            .user-card
-              .image
-                =image_tag signed_in_user.image
-              .name
-                =signed_in_user.first_name
-                =signed_in_user.last_name
-              .clearfix
 
-          .span8
-            .comment-form
-              =form_for [@post, @comment] do |f|
-                %fieldset
-                  =f.text_area :text, class: 'span8', placeholder: 'Write comment text here'
-                =f.submit 'Write', class: ['span3', 'btn', 'btn-primary']
-
+        =render 'comments/form'
 
         .comments
-          -@post.comments.each do |comment|
+          =render @post.comments
 
-            .row-fluid.comment
-              .span4
-                .user-card
-                  .image
-                    =image_tag comment.user.image
-                  .name
-                    =comment.user.first_name
-                    =comment.user.last_name
-                  .content
-                    .date
-                      =time_ago_in_words(comment.created_at)
-                      ago
-                  .clearfix
-
-              .span8
-                .text
-                  =comment.text
+        =render 'comments/form'

@@ -8,6 +8,6 @@ Fcchelsea::Application.routes.draw do
 
   resources :users
   resources :posts do
-    resources :comments, :only => [:create, :update, :destroy]
+    resources :comments, :only => [:index, :create, :update, :destroy]
   end
 end

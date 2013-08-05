@@ -1,0 +1,9 @@
+.row-fluid.comment-form
+  .span4
+    =render signed_in_user
+  .span8
+    .comment-form
+      =form_for [@post, @comment] do |f|
+        %fieldset
+          =f.text_area :text, class: 'span8', placeholder: 'Write comment text here'
+        =f.submit 'Write', class: ['span3', 'btn', 'btn-primary']

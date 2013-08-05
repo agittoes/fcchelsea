@@ -24,12 +24,14 @@
           float: left;
           margin: 0 6px 1px 0;
 
-          box-shadow: $box-shadow;
-
-          img { border-radius: $item-boreder-radius; }
+          img {
+            border-radius: $item-boreder-radius;
+            box-shadow: $box-shadow;
+          }
         }
+
         .text {
-          text-indent: 1em;
+          //text-indent: 1em;
           margin-bottom: 0.4em;
         }
       }
