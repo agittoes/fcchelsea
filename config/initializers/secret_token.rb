@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Fcchelsea::Application.config.secret_key_base = 'a8f5829b3b0580ed5c0c75901c4f109d491e56964d98bcad916b2bf4652451fec16b211e2373ab31d72578014992ca16e4e7dc4a0851e118deb9fd59f7c1a202'
+Balltracker::Application.config.secret_key_base = 'a8f5829b3b0580ed5c0c75901c4f109d491e56964d98bcad916b2bf4652451fec16b211e2373ab31d72578014992ca16e4e7dc4a0851e118deb9fd59f7c1a202'

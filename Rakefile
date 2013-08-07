@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Fcchelsea::Application.load_tasks
+Balltracker::Application.load_tasks

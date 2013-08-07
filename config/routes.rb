@@ -1,4 +1,4 @@
-Fcchelsea::Application.routes.draw do
+Balltracker::Application.routes.draw do
   root 'main#home'
 
   get '/auth/:provider', :to => 'sessions#auth'
