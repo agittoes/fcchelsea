@@ -14,16 +14,19 @@
           =format_date(@post.created_at)
 
         .ctrl
-          =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
-            Edit Post
+          -if signed_in_user_has_admin_permissions?
+            =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
+              Edit Post
 
       .comment-block
         %h3
           Comments
 
-        =render 'comments/form'
+        -if user_signed_in?
+          =render 'comments/form'
 
         .comments
           =render @post.comments
 
-        =render 'comments/form'
+        -if user_signed_in?
+          =render 'comments/form'

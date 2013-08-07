@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :admin_permissions_required, :except => [:index, :show]
   before_action :target_post_required, :only => [:show, :edit, :update, :destroy]
 
   def index

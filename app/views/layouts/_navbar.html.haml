@@ -17,10 +17,10 @@
             =link_to 'Last posts', posts_path
 
         %ul.nav.pull-right
-          -if signed_in_user
+          -if user_signed_in?
             %li
-              =link_to @user.oauth['facebook']['info']['urls']['Facebook'] do
-                =@user.nickname
+              =link_to signed_in_user.oauth['facebook']['info']['urls']['Facebook'] do
+                =signed_in_user.nickname
             %li
               =link_to 'Logout', signout_path, :method => :delete
           -else
