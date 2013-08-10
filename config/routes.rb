@@ -10,4 +10,20 @@ Balltracker::Application.routes.draw do
   resources :posts do
     resources :comments, :only => [:index, :create, :update, :destroy]
   end
+
+  resources :teams, :only => [:index, :create, :update, :destroy]
+
+  resources :seasons do
+    collection do
+      get 'last'
+    end
+
+    resources :rounds
+  end
+
+  resources :rounds, :except => [:new, :create] do
+    resources :games
+  end
+
+  resources :games
 end

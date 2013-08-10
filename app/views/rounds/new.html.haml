@@ -1,0 +1,6 @@
+.round-form
+  =form_for [@season, @round] do |f|
+    %fieldset
+      =f.select :begin_date, select_model_date_range(@season)
+      =f.select :end_date, select_model_date_range(@season)
+      =f.submit :class => ['btn', 'btn-primary']

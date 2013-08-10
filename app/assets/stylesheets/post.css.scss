@@ -58,3 +58,24 @@
     }
   }
 }
+
+.post-form {
+  input, textarea, .images {
+    display: block;
+    width: 100%;
+  }
+
+  textarea {
+    height: 20em;
+  }
+
+  label {
+    margin-top: 20px;
+  }
+
+  .images {
+    border: $block-border;
+    border-radius: $item-boreder-radius;
+    padding: 20px;
+  }
+}

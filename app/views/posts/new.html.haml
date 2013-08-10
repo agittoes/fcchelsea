@@ -4,7 +4,7 @@
 .row-fluid
   .span8
     =form_for @post do |f|
-      %fieldset.standard-form
+      %fieldset.form.post-form
         =f.label :title
         =f.text_field :title
 
@@ -13,9 +13,10 @@
         =f.label :remote_image_url, 'Image URL'
         =f.text_field :remote_image_url
 
-        =image_tag @post.image.url
-        =image_tag @post.image.url(:feed)
-        =image_tag @post.image.url(:sidebar)
+        .images
+          =image_tag @post.image.url
+          =image_tag @post.image.url(:feed)
+          =image_tag @post.image.url(:sidebar)
 
         =f.label :text
         =f.text_area :text

@@ -1,0 +1,53 @@
+%h1
+  =@season.title
+  %small
+    ="#{format_date(@season.begin_date)} - #{format_date(@season.end_date)}"
+
+.rounds-list
+  Rounds:
+  .btn-group
+    -@season.rounds.each do |round|
+      =link_to round.number, "#round-#{round.id}", class: ['btn', 'btn-mini']
+  =link_to "Add round", new_season_round_path(@season), class: ['btn', 'btn-primary', 'btn-mini']
+
+  -@season.rounds.each do |round|
+    %a{name: "round-#{round.id}"}
+    .round
+      %h4
+        ="Round ##{round.number} (#{format_date(round.begin_date)} - #{format_date(round.end_date)}) Games - #{round.games.count}/10"
+
+      %table.games-table.table
+        %tbody
+          -round.games.each_with_index do |game|
+            %tr
+              %a{name: "game-#{game.id}"}
+              %td.date
+                =format_date(game.begin_date)
+
+              %td.home_team_title
+                =game.home_team.title
+              %td.home_team_image
+                =image_tag game.home_team.image.url(:small)
+
+              %td.goals_number
+                ="#{game.home_goals_number}:#{game.visitor_goals_number}"
+
+              %td.visitor_team_image
+                =image_tag game.visitor_team.image.url(:small)
+              %td.visitor_team_title
+                =game.visitor_team.title
+
+              %td.actions
+                [
+                =link_to 'Edit', edit_game_path(game)
+                ][
+                =link_to 'Delete', game, :method => :delete, :confirm => 'Are you sure?'
+                ]
+
+      .ctrl
+        =link_to "Add game", new_round_game_path(round), class: ['btn', 'btn-primary'] unless round.games.count < 10
+        =link_to "Edit round", edit_round_path(round), class: ['btn', 'btn-warning']
+        =link_to "Delete round", round, :method => :delete, confirm: 'Are you sure?', class: ['btn', 'btn-danger']
+
+  .ctrl
+    =link_to "Add round", new_season_round_path(@season), class: ['btn', 'btn-primary', 'btn-large']

@@ -1,0 +1,21 @@
+.game-form
+  =form_for round_specified?? [@round, @game] : @game do |f|
+    %fieldset
+      .row-fluid
+        .span6.right
+          %h3
+            Home
+          .title
+            =f.collection_select  :home_team, @teams, :id, :title
+          .goals_number
+            =f.text_field :home_goals_number, class: 'input-mini'
+        .span6.left
+          %h3
+            Visitors
+          .title
+            =f.collection_select  :visitor_team, @teams, :id, :title
+          .goals_number
+            =f.text_field :visitor_goals_number, class: 'input-mini'
+      .center
+        =f.select :begin_date, select_model_date_range(@round) if round_specified?
+        =f.submit :class => ['btn', 'btn-primary']

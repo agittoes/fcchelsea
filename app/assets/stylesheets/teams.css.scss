@@ -1,0 +1,27 @@
+@import "varibles.css.scss";
+
+.teams-list {
+  .team {
+    float: left;
+
+    box-sizing: border-box;
+    width: 200px;
+
+    margin: 10px;
+
+    border: $block-border;
+
+    .image {
+      display: table;
+      margin: 10px auto;
+    }
+
+    .title {
+      text-align: center;
+      padding: 10px 2px 10px 2px;
+
+      background-color: $block-border-color;
+      font-size: 1.2em;
+    }
+  }
+}

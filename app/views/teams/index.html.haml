@@ -1,0 +1,24 @@
+%h1
+  Teams
+
+%h3
+  Add new
+.team-form.form.inline-form
+  =form_for @team do |f|
+    %fieldset
+      =f.text_field :key, :placeholder => 'Key', class: ['input-small']
+      =f.text_field :title, :placeholder => 'Title'
+      =f.text_field :remote_image_url, :placeholder => 'Logo URL'
+      =f.file_field :image, :placeholder => 'Logo file'
+      =f.submit class: ['btn', 'btn-primary']
+
+
+
+.teams-list.clearfix
+  -if @teams
+    -@teams.each do |team|
+      .team
+        .image
+          =image_tag team.image.url()
+        .title
+          =team.title

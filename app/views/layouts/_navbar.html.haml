@@ -12,9 +12,22 @@
       .nav-collapse.collapse
         %ul.nav
           %li
-            =link_to 'New post', new_post_path
-          %li
             =link_to 'Last posts', posts_path
+
+          -if signed_in_user_has_admin_permissions?
+            %li.dropdown
+              %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                Admin
+                <b class="caret"></b>
+              %ul.dropdown-menu
+                %li
+                  =link_to 'New post', new_post_path
+                %li
+                  =link_to 'Seasons', seasons_path
+                %li
+                  =link_to 'Teams', teams_path
+
+
 
         %ul.nav.pull-right
           -if user_signed_in?

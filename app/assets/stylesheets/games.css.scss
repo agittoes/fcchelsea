@@ -1,0 +1,29 @@
+.games-table {
+  tbody {
+    td {
+      vertical-align: middle;
+    }
+
+    .date {
+
+    }
+
+    .home_team_title { text-align: right; }
+    .home_team_image, .goals_number, .visitor_team_image { text-align: center; }
+    .visitor_team_title { text-align: left; }
+
+    .actions {
+      text-align: right;
+    }
+  }
+}
+
+.game-form {
+  .left-column {
+    text-align: right;
+  }
+
+  .right-column {
+    text-align: left;
+  }
+}
