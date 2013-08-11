@@ -1,4 +1,7 @@
 en:
+  nav:
+    home: 'Home'
+
   page:
     title:
       feed: 'Feed'

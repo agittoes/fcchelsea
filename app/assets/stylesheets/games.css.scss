@@ -1,5 +1,9 @@
 .games-table {
   tbody {
+
+    tr.completted {
+      background-color: cadetblue;
+    }
     td {
       vertical-align: middle;
     }

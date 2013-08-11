@@ -19,7 +19,7 @@
       %table.games-table.table
         %tbody
           -round.games.each_with_index do |game|
-            %tr
+            %tr{class: game.completted? ? 'completted' : ''}
               %a{name: "game-#{game.id}"}
               %td.date
                 =format_date(game.begin_date)
@@ -30,7 +30,10 @@
                 =image_tag game.home_team.image.url(:small)
 
               %td.goals_number
-                ="#{game.home_goals_number}:#{game.visitor_goals_number}"
+                -if game.completted?
+                  ="#{game.home_goals_number}:#{game.visitor_goals_number}"
+                -else
+                  \---
 
               %td.visitor_team_image
                 =image_tag game.visitor_team.image.url(:small)

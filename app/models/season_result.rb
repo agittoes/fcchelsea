@@ -4,9 +4,18 @@ class SeasonResult
   belongs_to :season, :inverse_of => :results
   belongs_to :team, :inverse_of => :results
 
+  field :games, type: Integer, :default => 0
+
+  field :scored_goals, type: Integer, :default => 0
+  field :against_goals, type: Integer, :default => 0
+
   field :wins, type: Integer, :default => 0
   field :loses, type: Integer, :default => 0
-  field :ties, type: Integer, :default => 0
+  field :draws, type: Integer, :default => 0
 
-  field :score, type: Integer, :default => 0
+  field :points, type: Integer, :default => 0
+
+  def goals_diff
+    self.scored_goals - self.against_goals
+  end
 end

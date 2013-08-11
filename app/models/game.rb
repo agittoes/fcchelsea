@@ -7,8 +7,6 @@ class Game
   field :home_goals_number, type: Integer, :default => 0
   field :visitor_goals_number, type: Integer, :default => 0
 
-  field :completed, type: Boolean, :default => false
-
   belongs_to :home_team, class_name: 'Team', :inverse_of => :home_games
   belongs_to :visitor_team, class_name: 'Team', :inverse_of => :visitor_games
   has_and_belongs_to_many :teams, :inverse_of => :games
@@ -19,6 +17,10 @@ class Game
   before_save :set_teams_list
   before_save :set_end_date
 
+
+  def completted?
+    self.end_date < DateTime.now
+  end
 
   private
 

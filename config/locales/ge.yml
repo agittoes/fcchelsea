@@ -1,4 +1,7 @@
 ge:
+  nav:
+    home: 'Mtavari'
+
   page:
     title:
       feed: 'Лента'
