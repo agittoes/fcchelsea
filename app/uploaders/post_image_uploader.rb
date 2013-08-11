@@ -40,7 +40,7 @@ class PostImageUploader < CarrierWave::Uploader::Base
   process :resize_to_fill => [720, 300]
 
   version :feed do
-    process :resize_to_fill => [480, 200]
+    process :resize_to_fill => [240, 200]
   end
 
   version :sidebar, :from_version => :feed  do

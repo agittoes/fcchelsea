@@ -1,7 +1,7 @@
 module ApplicationHelper
   def format_date(date)
     if date
-      date.strftime('%Y.%m.%d')
+      date.strftime('%d.%m.%Y')
     else
       '----'
     end

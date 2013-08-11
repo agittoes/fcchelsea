@@ -45,6 +45,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.10)
+    bb-ruby (1.0)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -230,6 +231,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bb-ruby
   better_errors (~> 0.9.0)
   binding_of_caller (~> 0.7.2)
   bson_ext (~> 1.8.6)

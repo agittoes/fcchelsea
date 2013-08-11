@@ -7,21 +7,35 @@
         %span.icon-bar
 
       =link_to root_path, class: 'brand' do
-        Home
+        =t('nav.home');
 
       .nav-collapse.collapse
         %ul.nav
-          %li
-            =link_to 'Last posts', posts_path
+          -post_categories.select(& lambda {|c| c.children.exists? }).each do |category|
+            -if category.children.exists?
+              %li.dropdown
+                %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
+                  =category.title
+                  %b.caret
+                %ul.dropdown-menu
+                  -category.children.each do |sub_category|
+                    %li
+                      =link_to sub_category.title, posts_path(:post_category => sub_category.id)
+            -else
+              %li
+                =link_to category.title, posts_path(:post_category => category.id)
+
 
           -if signed_in_user_has_admin_permissions?
             %li.dropdown
               %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
                 Admin
-                <b class="caret"></b>
+                %b.caret
               %ul.dropdown-menu
                 %li
                   =link_to 'New post', new_post_path
+                %li
+                  =link_to 'Categories', post_categories_path
                 %li
                   =link_to 'Seasons', seasons_path
                 %li

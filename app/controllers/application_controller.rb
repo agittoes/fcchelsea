@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :signed_in_user
 
-  helper_method :signed_in_user, :user_signed_in?, :signed_in_user_has_admin_permissions?
+  helper_method :signed_in_user, :user_signed_in?, :signed_in_user_has_admin_permissions?, :post_categories
 
   def sign_in(user)
     @signed_in_user = user
@@ -42,5 +42,9 @@ class ApplicationController < ActionController::Base
 
   def redirect_back
     redirect_to request.referer || root_path
+  end
+
+  def post_categories
+    @post_categories ||= PostCategory.parent
   end
 end

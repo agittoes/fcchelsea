@@ -1,12 +1,17 @@
 @import "varibles.css.scss";
 
-.post-page {
+.post-page, .posts-list {
   .post {
+    border-bottom: $block-border;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+
     .title {
       font: $title-1-font;
     }
 
     .content {
+      margin: 10px 0 10px 0;
       .image {
         img {
           border-radius: $item-boreder-radius;
@@ -15,7 +20,7 @@
       }
 
       .text {
-        //text-indent: 1em;
+        padding-top: 20px;
       }
     }
 
@@ -24,17 +29,6 @@
 
       font: $title-4-font;
       font-style: italic;
-    }
-
-    .ctrl {
-      text-align: right;
-
-      border-top: $block-border;
-      padding-top: 5px;
-    }
-
-    .image, .text, .date, .ctrl {
-      margin-top: 20px;
     }
   }
 
@@ -58,6 +52,46 @@
     }
   }
 }
+
+//.posts-list {
+//  .post {
+//    border-bottom: $block-border;
+//    margin: 1em 0 1em 0;
+//
+//    .title {
+//      margin-bottom: 20px;
+//
+//      font-size: 1.1em;
+//      font-weight: bold;
+//
+//      text-shadow: $text-shadow;
+//    }
+//
+//    .content {
+//      .image {
+//        margin-bottom: 20px;
+//
+//        img {
+//          border-radius: $item-boreder-radius;
+//          box-shadow: $box-shadow;
+//        }
+//      }
+//
+//      .text {
+//        //text-indent: 1em;
+//        margin-bottom: 0.4em;
+//      }
+//    }
+//
+//    .date {
+//      text-align: right;
+//
+//      font-style: italic;
+//
+//      color: $color2;
+//    }
+//  }
+//}
 
 .post-form {
   input, textarea, .images {

@@ -1,0 +1,30 @@
+.row-fluid
+  .span8
+    -if @category
+      %h1
+        =@category.title
+    -else
+      %h1
+        =t('page.title.feed')
+
+    .posts-list
+      -@posts.each do |post|
+        .post
+          .title
+            =link_to post.title, post
+          .content
+            .image
+              =image_tag post.image.url
+            .text
+              =post.feed
+
+          .ctrl
+            =link_to 'Read more', post, class: ['btn']
+            -if signed_in_user_has_admin_permissions?
+              =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
+                Edit Post
+
+          .date
+            =format_date(post.created_at)
+
+

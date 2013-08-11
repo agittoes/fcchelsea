@@ -30,7 +30,7 @@ test:
 production:
   sessions:
     default:
-      database: fcchelsea
+      database: fcchelsea_development
       hosts:
         - localhost:27017
       options:

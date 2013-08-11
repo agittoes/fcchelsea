@@ -39,6 +39,8 @@ gem 'carrierwave', '~> 0.9.0'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
 gem 'mini_magick', '~> 3.6.0'
 
+gem 'bb-ruby', require: 'bb-ruby'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

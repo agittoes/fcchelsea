@@ -8,6 +8,10 @@
         =f.label :title
         =f.text_field :title
 
+        =f.label :post_category
+        -#=f.select :post_category_id, post_categories.map {|category| [category.title, category.id]}
+        =f.grouped_collection_select :post_category_id, post_categories.select {|c| c.children.exists? }, :children, :title, :id, :title
+
         =f.label :image
         =f.file_field :image
         =f.label :remote_image_url, 'Image URL'
@@ -22,3 +26,4 @@
         =f.text_area :text
 
       =f.submit 'Save', class: ['btn', 'btn-primary', 'btn-large']
+      =link_to 'Delete', @post, :method => :delete, :confirm => 'Are you sure?', class: ['btn', 'btn-danger', 'btn-large'] unless @post.new_record?

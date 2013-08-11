@@ -11,6 +11,8 @@ Balltracker::Application.routes.draw do
     resources :comments, :only => [:index, :create, :update, :destroy]
   end
 
+  resources :post_categories, :only => [:index, :create, :update, :destroy]
+
   resources :teams, :only => [:index, :create, :update, :destroy]
 
   resources :seasons do
@@ -26,4 +28,6 @@ Balltracker::Application.routes.draw do
   end
 
   resources :games
+
+  get '/:action', controller: 'main'
 end

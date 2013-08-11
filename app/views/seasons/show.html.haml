@@ -45,7 +45,7 @@
                 ]
 
       .ctrl
-        =link_to "Add game", new_round_game_path(round), class: ['btn', 'btn-primary'] unless round.games.count < 10
+        =link_to "Add game", new_round_game_path(round), class: ['btn', 'btn-primary'] if round.games.count < 10
         =link_to "Edit round", edit_round_path(round), class: ['btn', 'btn-warning']
         =link_to "Delete round", round, :method => :delete, confirm: 'Are you sure?', class: ['btn', 'btn-danger']
 

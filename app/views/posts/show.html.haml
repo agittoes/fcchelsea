@@ -4,29 +4,36 @@
       .post
         .title
           =@post.title
+          -if signed_in_user_has_admin_permissions?
+            [
+            =link_to edit_post_path(@post) do
+              Edit
+            ]
         .content
           -if @post.image
             .image
               =image_tag @post.image.url
           .text
-            =@post.text
-        .date
-          =format_date(@post.created_at)
+            =@post.html
 
         .ctrl
           -if signed_in_user_has_admin_permissions?
             =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
               Edit Post
 
+        .date
+          =format_date(@post.created_at)
+
       .comment-block
         %h3
           Comments
 
-        -if user_signed_in?
+
+        -if user_signed_in? && @post.comments.count > 10
           =render 'comments/form'
 
         .comments
           =render @post.comments
 
-        -if user_signed_in?
-          =render 'comments/form'
+          -if user_signed_in?
+            =render 'comments/form'

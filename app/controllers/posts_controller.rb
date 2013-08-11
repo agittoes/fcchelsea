@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   before_action :target_post_required, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @posts = Post.all.sort({created_at: -1})
+    if params.include? :post_category
+      @category = PostCategory.find(params[:post_category])
+      @posts = @category.posts
+    else
+      @posts = Post.all.sort(created_at: -1)
+    end
   end
 
   def show
@@ -20,6 +25,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+
     if @post.save
       redirect_to @post
     else
@@ -28,7 +34,9 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @post.update_attributes(post_params)
+    @post.assign_attributes(post_params)
+
+    if @post.save
       redirect_to @post
     else
       render :edit
@@ -48,10 +56,15 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(
+        :post_category_id,
         :title,
         :text,
         :image,
         :remote_image_url
     )
+  end
+
+  def get_category
+    @category ||= PostCategory.find(params[:post][:post_category])
   end
 end
