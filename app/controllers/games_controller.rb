@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   before_action :round_specified?, :only => [:create]
+  before_action :target_game_required, :only => [:edit, :update, :destroy]
 
   def new
     if round_specified?
@@ -9,6 +10,12 @@ class GamesController < ApplicationController
       @game = Game.new
       @teams = Team.all
     end
+
+    render :edit
+  end
+
+  def edit
+    @teams = @game.round ? @game.round.season.teams : Team.all
   end
 
   def create
@@ -17,6 +24,20 @@ class GamesController < ApplicationController
 
     if @game.save
       redirect_to round_specified? ? season_url(@round.season)+"#game-#{@game.id}" : @game
+    else
+      # TODO : Teams not supplied !
+      render :edit
+    end
+  end
+
+  def update
+    @game.assign_attributes(game_params)
+
+    if @game.save
+      redirect_to @game.round ? season_url(@game.round.season)+"#game-#{@game.id}" : @game
+    else
+      # TODO : Teams not supplied !
+      render :edit
     end
   end
 
@@ -31,10 +52,14 @@ class GamesController < ApplicationController
     !!(@round = params.include?(:round_id) ? Round.find(params[:round_id]) : nil)
   end
 
+  def target_game_required
+    @game ||= Game.find(params[:id])
+  end
+
   def game_params
     params.require(:game).permit(
         :begin_date,
-        :home_team, :visitor_team,
+        :home_team_id, :visitor_team_id,
         :home_goals_number, :visitor_goals_number,
         :commpleted
     )
