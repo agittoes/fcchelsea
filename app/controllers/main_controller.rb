@@ -7,7 +7,6 @@ class MainController < ApplicationController
 
   end
 
-
   def page
     render params[:page]
   end

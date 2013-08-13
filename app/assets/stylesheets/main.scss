@@ -1,14 +1,14 @@
 @import "varibles.css.scss";
 
 #myCarousel {
-  margin: -20px -20px 20px -20px;
-  border-radius: 20px;
+  &, .item, img, .carousel-caption { border-radius: $item-boreder-radius; }
 
   .item {
+    background-color: red;
 
-    img {
-      border-radius: 10px 10px 0 0;
+    .carousel-caption {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
     }
-
   }
 }

@@ -1,16 +1,30 @@
+-posts = post_for_corousel
 #myCarousel.carousel.slide
   %ol.carousel-indicators
-    %li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
-    %li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
-    %li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+    -posts.length.times do |i|
+      %li{"data-slide-to" => i, "data-target" => "#myCarousel", :class => i == 0? 'active' : ''}
+
+    -#%li.active{"data-slide-to" => "0", "data-target" => "#myCarousel"}
+    -#%li{"data-slide-to" => "1", "data-target" => "#myCarousel"}
+    -#%li{"data-slide-to" => "2", "data-target" => "#myCarousel"}
+
   / Carousel items
   .carousel-inner
-    .active.item
-      =image_tag 'http://www.chelsea-fc.ru/ai/news/1331362/bgimage/RF.jpg'
-    .item
-      =image_tag 'http://www.chelsea-fc.ru/ai/news/1331174/bgimage/Mikel_Roma.jpg'
-    .item
-      =image_tag 'http://www.chelsea-fc.ru/ai/news/1331100/bgimage/b640.jpg'
+    -posts.each do |post|
+      =link_to post, class: posts[0] == post ? ['item', 'active'] : 'item' do
+        =image_tag post.image.url
+        .carousel-caption
+          %h3
+            =post.title
+          %p
+            =truncate(post.text, :length => 120)
+
+    -#.active.item
+    -#  =image_tag 'http://www.chelsea-fc.ru/ai/news/1331362/bgimage/RF.jpg'
+    -#.item
+    -#  =image_tag 'http://www.chelsea-fc.ru/ai/news/1331174/bgimage/Mikel_Roma.jpg'
+    -#.item
+    -#  =image_tag 'http://www.chelsea-fc.ru/ai/news/1331100/bgimage/b640.jpg'
   / Carousel nav
   %a.carousel-control.left{"data-slide" => "prev", :href => "#myCarousel"} ‹
   %a.carousel-control.right{"data-slide" => "next", :href => "#myCarousel"} ›

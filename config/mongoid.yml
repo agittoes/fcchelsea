@@ -1,7 +1,7 @@
 development:
   sessions:
     default:
-      database: fcchelsea_development
+      database: fcchelsea
       hosts:
         - server:27017
       options:
