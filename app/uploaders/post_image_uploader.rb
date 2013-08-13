@@ -37,13 +37,9 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # end
 
   convert :jpg
-  process :resize_to_fill => [742, 300]
+  process :resize_to_fill => [742, 450]
 
-  version :feed do
-    process :resize_to_fill => [240, 200]
-  end
-
-  version :sidebar, :from_version => :feed  do
+  version :sidebar do
     process :resize_to_fill => [120, 100]
   end
 
