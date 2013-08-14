@@ -1,4 +1,5 @@
 class PostCategoriesController < ApplicationController
+  before_action :admin_permissions_required
   before_action :target_post_category_required, :only => [:edit, :update, :destroy]
 
   def index
