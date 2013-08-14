@@ -1,4 +1,4 @@
--posts = post_for_corousel
+-posts = posts_for_corousel
 #myCarousel.carousel.slide
   %ol.carousel-indicators
     -posts.length.times do |i|
@@ -11,13 +11,14 @@
   / Carousel items
   .carousel-inner
     -posts.each do |post|
-      =link_to post, class: posts[0] == post ? ['item', 'active'] : 'item' do
+      %div{class: posts[0] == post ? ['item', 'active'] : 'item'}
         =image_tag post.image.url
         .carousel-caption
           %h3
-            =post.title
+            =link_to post do
+              =post.title
           %p
-            =truncate(post.text, :length => 120)
+            =post.intro
 
     -#.active.item
     -#  =image_tag 'http://www.chelsea-fc.ru/ai/news/1331362/bgimage/RF.jpg'

@@ -11,7 +11,7 @@ Balltracker::Application.routes.draw do
     resources :comments, :only => [:index, :create, :update, :destroy]
   end
 
-  resources :post_categories, :only => [:index, :create, :update, :destroy]
+  resources :post_categories, :except => [:new]
 
   resources :teams, :only => [:index, :create, :update, :destroy]
 
@@ -29,5 +29,5 @@ Balltracker::Application.routes.draw do
 
   resources :games
 
-  get '/:action', controller: 'main'
+  get '/:key', to: 'posts#show_by_key', :as => :post_by_key
 end

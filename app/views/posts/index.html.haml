@@ -11,7 +11,7 @@
       -@posts.each do |post|
         .post
           .title
-            =link_to post.title, post
+            =link_to post.title, post_path_ex(post)
           .content
             .image
               =image_tag post.image.url
@@ -21,7 +21,7 @@
           .ctrl
             =link_to 'Read more', post, class: ['btn']
             -if signed_in_user_has_admin_permissions?
-              =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
+              =link_to edit_post_path(post), class: ['btn', 'btn-warning'] do
                 Edit Post
 
           .date

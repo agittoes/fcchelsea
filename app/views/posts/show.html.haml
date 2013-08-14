@@ -24,16 +24,16 @@
         .date
           =format_date(@post.created_at)
 
-      .comment-block
-        %h3
-          Comments
+      -if @post.allow_comments?
+        .comment-block
+          %h3
+            Comments
 
+          -if user_signed_in? && @post.comments.count > 10
+            =render 'comments/form', :object => @post
 
-        -if user_signed_in? && @post.comments.count > 10
-          =render 'comments/form'
+          .comments
+            =render @post.comments
 
-        .comments
-          =render @post.comments
-
-          -if user_signed_in?
-            =render 'comments/form'
+            -if user_signed_in?
+              =render 'comments/form', :object => @post

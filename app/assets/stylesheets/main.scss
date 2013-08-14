@@ -4,11 +4,21 @@
   &, .item, img, .carousel-caption { border-radius: $item-boreder-radius; }
 
   .item {
-    background-color: red;
+    height: 450px;
 
     .carousel-caption {
+      padding: 20px;
+      height: 130px;
+
+      p {
+        overflow: hidden;
+      }
+
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+
+      text-align: left;
+
     }
   }
 }

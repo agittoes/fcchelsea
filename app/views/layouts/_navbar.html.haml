@@ -20,7 +20,7 @@
                 %ul.dropdown-menu
                   -category.children.each do |sub_category|
                     %li
-                      =link_to sub_category.title, posts_path(:post_category => sub_category.id)
+                      =link_to sub_category.title, category_path_ex(sub_category)
             -else
               %li
                 =link_to category.title, posts_path(:post_category => category.id)
@@ -46,7 +46,7 @@
         %ul.nav.pull-right
           -if user_signed_in?
             %li
-              =link_to signed_in_user.oauth['facebook']['info']['urls']['Facebook'] do
+              =link_to signed_in_user.urls['facebook'] do
                 =signed_in_user.nickname
             %li
               =link_to 'Logout', signout_path, :method => :delete

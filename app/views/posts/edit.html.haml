@@ -1,5 +1,10 @@
 %h1
-  New post
+  -if @post.new_record?
+    New post
+  -else
+    Edit post
+    %i
+      =@post.title
 
 .row-fluid
   .span8
@@ -8,8 +13,10 @@
         =f.label :title
         =f.text_field :title
 
+        =f.label :key
+        =f.text_field :key
+
         =f.label :post_category
-        -#=f.select :post_category_id, post_categories.map {|category| [category.title, category.id]}
         =f.grouped_collection_select :post_category_id, post_categories.select {|c| c.children.exists? }, :children, :title, :id, :title
 
         =f.label :image
@@ -23,6 +30,17 @@
 
         =f.label :text
         =f.text_area :text
+
+      =f.label :allow_comments do
+        =f.check_box :allow_comments
+        Allow comments
+      =f.label :replace_line_brakes do
+        =f.check_box :replace_line_brakes
+        Replace line brakes with
+        ="<br/>"
+
+
+
 
       =f.submit 'Save', class: ['btn', 'btn-primary', 'btn-large']
       =link_to 'Delete', @post, :method => :delete, :confirm => 'Are you sure?', class: ['btn', 'btn-danger', 'btn-large'] unless @post.new_record?

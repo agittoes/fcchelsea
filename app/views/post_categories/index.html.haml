@@ -2,24 +2,32 @@
   Post categories
 
 %ul
-  -@post_categories.each do |category|
+  -post_categories.each do |category|
     %li
-      =category.title
+      ="#{category.title} /#{category.key}/"
+      [
+      =link_to 'edit', edit_post_category_path(category)
+      ]
       [
       =link_to 'x', category, method: :delete, confirm: 'Are you sure?'
       ]
       %ul
         -category.children.each do |c|
           %li
-            =c.title
+            ="#{c.title} /#{c.key}/"
+            [
+            =link_to 'edit', edit_post_category_path(c)
+            ]
             [
             =link_to 'x', c, method: :delete, confirm: 'Are you sure?'
             ]
+
 %h2
   Add category
   .category-form.form.form-inline
-    =form_for @category do |f|
+    =form_for @post_category do |f|
       =f.select :parent_id, @post_categories.collect {|parent| [parent.title, parent.id] }, {include_blank: '(Parentless)'}
-      =f.text_field :title
+      =f.text_field :key, placeholder: 'Key'
+      =f.text_field :title, placeholder: 'Title'
       =f.submit class: ['btn', 'btn-primary']
 

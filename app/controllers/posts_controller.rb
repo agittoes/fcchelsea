@@ -12,15 +12,30 @@ class PostsController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
+  end
+
+  def show_by_key
+    key = params.require(:key)
+    @post = Post[key]
+    if @post
+      render :show
+    else
+      @category = PostCategory[key]
+      if @category
+        @posts = @category.posts
+        render :index
+      else
+        raise 'Not fownd'
+      end
+    end
   end
 
   def new
     @post = Post.new
+    render :edit
   end
 
   def edit
-    render :new
   end
 
   def create
@@ -29,7 +44,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post
     else
-      render :new
+      render :edit
     end
   end
 
@@ -57,10 +72,13 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(
         :post_category_id,
+        :key,
         :title,
         :text,
         :image,
-        :remote_image_url
+        :remote_image_url,
+        :allow_comments,
+        :replace_line_brakes,
     )
   end
 

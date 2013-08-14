@@ -3,8 +3,8 @@
   .span4.sidebar
     .last-posts
       %h3
-        Last news
-      -@last_posts.each do |post|
+        =post_category_for_side_bar.title
+      -post_category_for_side_bar.posts.limit(10).each do |post|
         .post
           .title
             =link_to post.title, post
