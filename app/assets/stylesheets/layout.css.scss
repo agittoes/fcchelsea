@@ -1,5 +1,24 @@
 @import "varibles.css.scss";
 
+#logo {
+
+}
+
+#logo-text {
+  font-size: 3em;
+  font-weight: bold;
+
+  color: white;
+
+
+  text-align: left;
+  vertical-align: middle;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 body {
   background-color: $page-color;
   font: $general-font;
