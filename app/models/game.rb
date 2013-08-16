@@ -1,8 +1,9 @@
 class Game
   include Mongoid::Document
 
-  field :begin_date, type: DateTime
-  field :end_date, type: DateTime
+  field :date_time, type: String
+  field :begin_date, type: Time
+  field :end_date, type: Time
 
   field :home_goals_number, type: Integer, :default => 0
   field :visitor_goals_number, type: Integer, :default => 0
@@ -15,11 +16,11 @@ class Game
 
 
   before_save :set_teams_list
-  before_save :set_end_date
+  before_validation :set_begin_end_dates
 
 
   def completted?
-    self.end_date < DateTime.now
+    !!self.end_date && (self.end_date < DateTime.now)
   end
 
   private
@@ -28,7 +29,11 @@ class Game
     self.teams = [self.home_team, self.visitor_team]
   end
 
-  def set_end_date
-    self.end_date = self.begin_date + 2.hour unless self.end_date
+  def set_begin_end_dates
+    dt = DateTime.strptime(self.date_time, '%y.%m.%d %H:%M')
+    dt = dt.change(offset: '+0400')
+
+    self.begin_date = dt.to_time
+    self.end_date = self.begin_date + 2.hours
   end
 end

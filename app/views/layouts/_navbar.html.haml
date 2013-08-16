@@ -47,7 +47,7 @@
           -if user_signed_in?
             %li
               =link_to signed_in_user.urls['facebook'] do
-                =signed_in_user.nickname
+                =signed_in_user.nick
             %li
               =link_to 'Logout', signout_path, :method => :delete
           -else

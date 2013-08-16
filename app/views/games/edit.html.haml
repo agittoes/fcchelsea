@@ -17,7 +17,8 @@
           .goals_number
             =f.text_field :visitor_goals_number, class: 'input-mini'
       .center
-        =f.select :begin_date, select_model_date_range(@game.round) if @game.round
+        =f.text_field :date_time, placeholder: '%y.%m.%d %H:%M'
+
         %br/
         =f.submit :class => ['btn', 'btn-primary']
         -if @game.round

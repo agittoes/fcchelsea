@@ -52,4 +52,8 @@ class User
     return nil unless self.credentials.include? 'facebook'
     @facebook ||= Koala::Facebook::API.new(self.credentials['facebook']['token'])
   end
+
+  def nick
+    self.nickname || "#{self.first_name} #{self.last_name}"
+  end
 end

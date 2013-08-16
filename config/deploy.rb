@@ -5,9 +5,9 @@ set :scm, :git
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, 'fcchelsea.ge'                          # Your HTTP server, Apache/etc
-role :app, 'fcchelsea.ge'                          # This may be the same as your `Web` server
-role :db,  'fcchelsea.ge', :primary => true # This is where Rails migrations will run
+role :web, 'fcchelsea.ge' # Your HTTP server, Apache/etc
+role :app, 'fcchelsea.ge' # This may be the same as your `Web` server
+role :db, 'fcchelsea.ge', :primary => true # This is where Rails migrations will run
 
 #server 'fcchelsea.ge', :app, :web, :db, :primary => true
 
@@ -30,6 +30,14 @@ default_run_options[:pty] = true
 #   end
 # end
 
-task :restart_web_services, :role => :app do
-  run 'sudo -i ws-restart'
+namespace :my do
+  task :deploy, :role => :app do
+    run "cd /home/www/#{application} && git pull origin develop && ./bin/bundle install && ./bin/rake assets:precompile"
+
+    restart_web_services
+  end
+
+  task :restart_web_services, :role => :app do
+    run 'sudo -i ws-restart'
+  end
 end

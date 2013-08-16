@@ -1,20 +1,18 @@
 %h1
   =@season.title
-  %small
-    ="#{format_date(@season.begin_date)} - #{format_date(@season.end_date)}"
 
 .rounds-list
   Rounds:
   .btn-group
     -@season.rounds.each do |round|
       =link_to round.number, "#round-#{round.id}", class: ['btn', 'btn-mini']
-  =link_to "Add round", new_season_round_path(@season), class: ['btn', 'btn-primary', 'btn-mini']
+  =link_to "Add round", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-mini']
 
   -@season.rounds.each do |round|
     %a{name: "round-#{round.id}"}
     .round
       %h4
-        ="Round ##{round.number} (#{format_date(round.begin_date)} - #{format_date(round.end_date)}) Games - #{round.games.count}/10"
+        ="Round ##{round.number} Games - #{round.games.count}/10"
 
       %table.games-table.table
         %tbody
@@ -22,7 +20,7 @@
             %tr{class: game.completted? ? 'completted' : ''}
               %a{name: "game-#{game.id}"}
               %td.date
-                =format_date(game.begin_date)
+                ="#{format_date_time(game.begin_date)} / #{format_date_time(game.end_date)}"
 
               %td.home_team_title
                 =game.home_team.title
@@ -53,4 +51,4 @@
         =link_to "Delete round", round, :method => :delete, confirm: 'Are you sure?', class: ['btn', 'btn-danger']
 
   .ctrl
-    =link_to "Add round", new_season_round_path(@season), class: ['btn', 'btn-primary', 'btn-large']
+    =link_to "Add round", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-large']

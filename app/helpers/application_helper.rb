@@ -1,7 +1,15 @@
 module ApplicationHelper
   def format_date(date)
     if date
-      date.strftime('%d.%m.%Y')
+      date.getlocal.strftime('%d.%m.%Y')
+    else
+      '----'
+    end
+  end
+
+  def format_date_time(date_time)
+    if date_time
+      date_time.getlocal.strftime('%d.%m.%Y - %H:%M')
     else
       '----'
     end

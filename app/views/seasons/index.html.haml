@@ -8,8 +8,6 @@
         =link_to season do
           %h4
             =season.title
-            %small
-              ="(#{format_date(season.begin_date)} - #{format_date(season.end_date)})"
 
 .ctrl
   =link_to "New season", new_season_path, class: ['btn', 'btn-primary', 'btn-large']
