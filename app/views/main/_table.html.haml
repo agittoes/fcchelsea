@@ -1,0 +1,30 @@
+%table.table
+  %thead
+    %tr
+      %td Team
+      %td Games
+      %td Wins
+      %td Loses
+      %td Draws
+      %td Scored
+      %td Against
+      %td Points
+  %tbody
+    -current_season.results.each do |r|
+      %tr
+        %td
+          =r.team.title
+        %td
+          =r.games
+        %td
+          =r.wins 
+        %td     
+          =r.loses
+        %td
+          =r.draws
+        %td
+          =r.scored_goals
+        %td
+          =r.against_goals
+        %td
+          =r.points

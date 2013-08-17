@@ -14,6 +14,11 @@ class Season
 
     self.teams.each do |t|
       results[t.id] = {
+        games: 0,
+
+        scored_goals: 0,
+        against_goals: 0,
+
         wins: 0,
         loses: 0,
         draws: 0,
@@ -25,8 +30,15 @@ class Season
     self.rounds.each do |r|
       r.games.each do |g|
         next unless g.completted?
+        next unless g.home_goals_number && g.visitor_goals_number
 
         g.teams.each { |t| results[t.id][:games] += 1 }
+
+        results[g.home_team.id][:scored_goals] += g.home_goals_number
+        results[g.home_team.id][:against_goals] += g.visitor_goals_number
+
+        results[g.visitor_team.id][:scored_goals] += g.visitor_goals_number
+        results[g.visitor_team.id][:against_goals] += g.home_goals_number
 
 
         if g.home_goals_number == g.visitor_goals_number
@@ -46,6 +58,14 @@ class Season
           results[g.home_team.id][:loses] += 1
         end
       end
+    end
+
+    results.keys.each do |team_id|
+      se = SeasonResult.find_or_initialize_by(season_id: self.id, team_id: team_id)
+      se.assign_attributes(results[team_id])
+      se.save
+
+      results[team_id] = se
     end
 
     results

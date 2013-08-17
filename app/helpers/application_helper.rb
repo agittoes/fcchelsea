@@ -36,4 +36,8 @@ module ApplicationHelper
   def post_category_for_side_bar
     @post_category_for_side_bar ||= PostCategory['news']
   end
+
+  def current_season
+    @current_season ||= Season.last
+  end
 end

@@ -36,8 +36,14 @@
                   =link_to 'New post', new_post_path
                 %li
                   =link_to 'Categories', post_categories_path
-                %li
-                  =link_to 'Seasons', seasons_path
+                
+                -if current_season
+                  %li
+                    =link_to current_season.title, current_season
+                -else
+                  %li
+                    =link_to 'Seasons', seasons_path
+
                 %li
                   =link_to 'Teams', teams_path
 

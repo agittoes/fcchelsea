@@ -5,8 +5,8 @@ class Game
   field :begin_date, type: Time
   field :end_date, type: Time
 
-  field :home_goals_number, type: Integer, :default => 0
-  field :visitor_goals_number, type: Integer, :default => 0
+  field :home_goals_number, type: Integer
+  field :visitor_goals_number, type: Integer
 
   belongs_to :home_team, class_name: 'Team', :inverse_of => :home_games
   belongs_to :visitor_team, class_name: 'Team', :inverse_of => :visitor_games
@@ -20,7 +20,7 @@ class Game
 
 
   def completted?
-    !!self.end_date && (self.end_date < DateTime.now)
+    !!self.end_date && (self.end_date < Time.now)
   end
 
   private
