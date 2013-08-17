@@ -11,7 +11,7 @@
       %td გაშ.
       %td ქულა
   %tbody
-    -current_season.results.order_by(points: -1, scored_goals: -1, games: -1).each_with_index do |r, i|
+    -current_season.get_results.order_by(points: -1, scored_goals: -1, games: -1).each_with_index do |r, i|
       %tr{class: r.games == 0 ? 'inactive' : 'active'}
         %td.number
           =i + 1

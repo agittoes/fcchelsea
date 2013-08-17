@@ -1,5 +1,6 @@
 class Season
   include Mongoid::Document
+  @@last_results_calculation_time = {}
 
   field :title, type: String
 
@@ -7,6 +8,14 @@ class Season
   has_many :rounds, :inverse_of => :season, :dependent => :destroy
 
   has_many :results, :class_name => 'SeasonResult', :inverse_of => :season, :dependent => :destroy
+
+  def get_results
+    if (Time.now - @@last_results_calculation_time.fetch(self.id, Time.new(0))) > 1.minute
+      calculate_results
+    end
+
+    self.results
+  end
 
   def calculate_results
     results = {}
@@ -68,6 +77,7 @@ class Season
       results[team_id] = se
     end
 
+    @@last_results_calculation_time[self.id] = Time.now
     results
   end
 end

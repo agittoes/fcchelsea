@@ -32,7 +32,7 @@
           =format_date(@post.created_at)
 
       .cosial
-        .fb-like{"data-href" => "http://dev.fcchelsea.nuclight.org/#{post_path(@post)}", "data-send" => "true", "data-show-faces" => "true", "data-width" => "450"}
+        .fb-like{"data-href" => post_url(@post), "data-send" => "true", "data-show-faces" => "true", "data-width" => "450"}
 
       -if @post.allow_comments?
         .comment-block
