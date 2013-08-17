@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in_user
-    if Rails.env.development?
+    if false && Rails.env.development?
       @signed_in_user ||= User.first
     else
       @signed_in_user ||= User.find(session[:signed_in_user]) rescue false

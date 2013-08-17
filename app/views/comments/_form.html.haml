@@ -5,5 +5,5 @@
     .comment-form
       =form_for [object, object.comments.build] do |f|
         %fieldset
-          =f.text_area :text, class: 'span8', placeholder: 'Write comment text here'
-        =f.submit 'Write', class: ['span3', 'btn', 'btn-primary']
+          =f.text_area :text, class: 'span8', placeholder: 'დაწერეთ თქვენი კომენტარი...'
+        =f.submit 'გამოქვეყნება', class: ['span3', 'btn', 'btn-primary']

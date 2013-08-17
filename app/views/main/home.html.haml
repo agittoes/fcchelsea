@@ -3,8 +3,8 @@
   .span4.sidebar
     .last-posts
       %h3
-        =post_category_for_side_bar.title
-      -post_category_for_side_bar.posts.limit(10).each do |post|
+        ბოლო სიახლეები
+      -posts_for_side_bar.each do |post|
         .post
           .title
             =link_to post.title, post
@@ -14,7 +14,8 @@
                 =image_tag post.image.url(:sidebar)
             .text
               =post.intro
-              =link_to '/Read more', post
+              %br/
+              =link_to '(სრულიად წაკითხვა)', post
             .clearfix
           .date
             =format_date(post.created_at)

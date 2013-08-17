@@ -1,3 +1,10 @@
+-content_for :social_meta do
+  %meta{:content => '1234567890', :property => "fb:app_id"}/
+  %meta{:content => 'article', :property => "og:type"}/
+  %meta{:content => post_url(@post), :property => "og:url"}/
+  %meta{:content => @post.title, :property => "og:title"}/
+  %meta{:content => root_url + @post.image.url, :property => "og:image"}/
+
 .row-fluid
   .span8
     .post-page
@@ -7,7 +14,7 @@
           -if signed_in_user_has_admin_permissions?
             [
             =link_to edit_post_path(@post) do
-              Edit
+              შეცვლა
             ]
         .content
           -if @post.image
@@ -19,15 +26,21 @@
         .ctrl
           -if signed_in_user_has_admin_permissions?
             =link_to edit_post_path(@post), class: ['btn', 'btn-warning'] do
-              Edit Post
+              რედაქტირება
 
         .date
           =format_date(@post.created_at)
 
+      .cosial
+        .fb-like{"data-href" => "http://dev.fcchelsea.nuclight.org/#{post_path(@post)}", "data-send" => "true", "data-show-faces" => "true", "data-width" => "450"}
+
       -if @post.allow_comments?
         .comment-block
           %h3
-            Comments
+            კომენტარიები
+          -unless user_signed_in?
+            %p იმისათვის , რომ დატოვოთ კომენტარი გთხოვთ გაიაროთ ავტორიზაცია (გთხოვთ დააჭიროთ ქვევით მითითებულ ღილაკს)
+            =render 'layouts/social_login'
 
           -if user_signed_in? && @post.comments.count > 10
             =render 'comments/form', :object => @post

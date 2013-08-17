@@ -24,16 +24,39 @@
 }
 
 .season-result-table {
+
   thead {
     tr {
       font-weight: bold;
       color: $block-color;
 
-      background-color: $block-shadow-color;
+      background-color: $color3;
+
+      border-radius: 4px 4px 0 0;
+      border-color: $color3;
+      td {
+        border-color: $color3;
+
+        &:first-child {
+          border-radius: 4px 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 4px 0 0;
+        }
+      }
     }
   }  
 
   tbody {
+    td {
+      text-align: center;
+    }
+
+    .team {
+      text-align: left;
+    }
+
     tr.inactive {
       color: $color6;
     } 
@@ -41,7 +64,7 @@
     tr.active {
       .team {
 
-      }   
+      }
 
       .wins, .scored {
         background-color: #DDFFDD;
@@ -49,6 +72,10 @@
 
       .loses, .against {
         background-color: #FFDDDD;
+      }
+
+      .draws {
+        background-color: #FFFFDD;
       }
 
       .points {

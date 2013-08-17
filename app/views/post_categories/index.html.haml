@@ -1,12 +1,12 @@
 %h1
-  Post categories
+  პოსტის კატეგორია
 
 %ul
   -post_categories.each do |category|
     %li
       ="#{category.title} /#{category.key}/"
       [
-      =link_to 'edit', edit_post_category_path(category)
+      =link_to 'შეცვლა', edit_post_category_path(category)
       ]
       [
       =link_to 'x', category, method: :delete, confirm: 'Are you sure?'
@@ -16,14 +16,14 @@
           %li
             ="#{c.title} /#{c.key}/"
             [
-            =link_to 'edit', edit_post_category_path(c)
+            =link_to 'შეცვლა', edit_post_category_path(c)
             ]
             [
             =link_to 'x', c, method: :delete, confirm: 'Are you sure?'
             ]
 
 %h2
-  Add category
+  კატეგორიის დამატება
   .category-form.form.form-inline
     =form_for @post_category do |f|
       =f.select :parent_id, @post_categories.collect {|parent| [parent.title, parent.id] }, {include_blank: '(Parentless)'}

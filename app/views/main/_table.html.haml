@@ -1,28 +1,32 @@
 %table.table.table-bordered.table-condensed.season-result-table
   %thead
     %tr
-      %td Team
-      %td Games
-      %td Wins
-      %td Loses
-      %td Draws
-      %td Scored
-      %td Against
-      %td Points
+      %td №
+      %td გუნდი
+      %td თამაში
+      %td მოგება
+      %td ფრე
+      %td წაგება
+      %td გატ.
+      %td გაშ.
+      %td ქულა
   %tbody
-    -current_season.results.order_by(points: -1, scored_goals: -1).each do |r|
+    -current_season.results.order_by(points: -1, scored_goals: -1, games: -1).each_with_index do |r, i|
       %tr{class: r.games == 0 ? 'inactive' : 'active'}
+        %td.number
+          =i + 1
+
         %td.team
           =image_tag r.team.image.url(:mini)
           =r.team.title
         %td.games
           =r.games
         %td.wins
-          =r.wins 
-        %td.loses     
-          =r.loses
+          =r.wins
         %td.draws
           =r.draws
+        %td.loses     
+          =r.loses
         %td.scored
           =r.scored_goals
         %td.against

@@ -37,7 +37,15 @@ module ApplicationHelper
     @post_category_for_side_bar ||= PostCategory['news']
   end
 
+  def posts_for_side_bar
+    @posts_for_side_bar ||= Post.order_by(created_at: -1).limit(10)
+  end 
+
+
+
   def current_season
     @current_season ||= Season.last
   end
 end
+
+puts "Hello wordl"

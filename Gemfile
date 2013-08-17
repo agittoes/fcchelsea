@@ -29,6 +29,7 @@ gem 'bson_ext', '~> 1.8.6'
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails', '2.2.7'
+gem 'font-awesome-rails'
 
 gem 'omniauth-facebook', '~> 1.4.1'
 gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'

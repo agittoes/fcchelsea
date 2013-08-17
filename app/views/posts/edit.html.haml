@@ -1,8 +1,8 @@
 %h1
   -if @post.new_record?
-    New post
+    ახალი პოსტი
   -else
-    Edit post
+    პოსტის რედაქტირება
     %i
       =@post.title
 
@@ -10,30 +10,30 @@
   .span8
     =form_for @post do |f|
       %fieldset.form.post-form
-        =f.label :title
+        =f.label :title, 'სათაური'
         =f.text_field :title
 
-        =f.label :key
+        =f.label :key,'გასაღები (არაა სავალდებულო)'
         =f.text_field :key
 
-        =f.label :post_category
+        =f.label :post_category, 'კატეგორია'
         =f.grouped_collection_select :post_category_id, post_categories.select {|c| c.children.exists? }, :children, :title, :id, :title
 
-        =f.label :image
+        =f.label :image, 'სურათი ატვირთვა'
         =f.file_field :image
-        =f.label :remote_image_url, 'Image URL'
+        =f.label :remote_image_url, 'სურათის URL'
         =f.text_field :remote_image_url
 
         .images
           =image_tag @post.image.url
           =image_tag @post.image.url(:sidebar)
 
-        =f.label :text
+        =f.label :text, 'ტექსტი'
         =f.text_area :text
 
       =f.label :allow_comments do
         =f.check_box :allow_comments
-        Allow comments
+        კომენტარიები
       =f.label :replace_line_brakes do
         =f.check_box :replace_line_brakes
         Replace line brakes with
@@ -42,5 +42,5 @@
 
 
 
-      =f.submit 'Save', class: ['btn', 'btn-primary', 'btn-large']
-      =link_to 'Delete', @post, :method => :delete, :confirm => 'Are you sure?', class: ['btn', 'btn-danger', 'btn-large'] unless @post.new_record?
+      =f.submit 'შენახვა', class: ['btn', 'btn-primary', 'btn-large']
+      =link_to 'წაშლა', @post, :method => :delete, :confirm => 'Are you sure?', class: ['btn', 'btn-danger', 'btn-large'] unless @post.new_record?

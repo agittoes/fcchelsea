@@ -19,10 +19,10 @@
               =post.feed
 
           .ctrl
-            =link_to 'Read more', post, class: ['btn']
+            =link_to 'სრულიად წაკითხვა', post, class: ['btn']
             -if signed_in_user_has_admin_permissions?
               =link_to edit_post_path(post), class: ['btn', 'btn-warning'] do
-                Edit Post
+                რედაქტირება
 
           .date
             =format_date(post.created_at)

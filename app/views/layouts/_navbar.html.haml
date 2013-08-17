@@ -7,7 +7,7 @@
         %span.icon-bar
 
       =link_to root_path, class: 'brand' do
-        =t('nav.home');
+        მთავარი
 
       .nav-collapse.collapse
         %ul.nav
@@ -29,34 +29,39 @@
           -if signed_in_user_has_admin_permissions?
             %li.dropdown
               %a.dropdown-toggle{href: '#', data: {toggle: 'dropdown'}}
-                Admin
+                ადმინ პანელი
                 %b.caret
               %ul.dropdown-menu
                 %li
-                  =link_to 'New post', new_post_path
+                  =link_to 'ახალი პოსტი', new_post_path
                 %li
-                  =link_to 'Categories', post_categories_path
+                  =link_to 'კატეგორიები', post_categories_path
                 
                 -if current_season
                   %li
                     =link_to current_season.title, current_season
                 -else
                   %li
-                    =link_to 'Seasons', seasons_path
+                    =link_to 'ჩემპიონატები', seasons_path
 
                 %li
-                  =link_to 'Teams', teams_path
+                  =link_to 'გუნდები', teams_path
 
 
 
         %ul.nav.pull-right
+          %li.divider-vertical
           -if user_signed_in?
             %li
-              =link_to signed_in_user.urls['facebook'] do
-                =signed_in_user.nick
-            %li
-              =link_to 'Logout', signout_path, :method => :delete
+              .btn-group
+                =link_to signed_in_user.urls['facebook'], class: %w(btn user-link) do
+                  .avatar
+                    =image_tag signed_in_user.image, class: 'img-rounded'
+                  =signed_in_user.nick
+
+                =link_to signout_path, :method => :delete, class: %w(btn btn-primary) do
+                  %i.icon-signout
           -else
             %li
-              =link_to '/auth/facebook' do
-                Facebook
+              =render 'layouts/social_login'
+          %li.divider-vertical

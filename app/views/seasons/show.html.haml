@@ -2,17 +2,17 @@
   =@season.title
 
 .rounds-list
-  Rounds:
+  ტურები:
   .btn-group
     -@season.rounds.each do |round|
       =link_to round.number, "#round-#{round.id}", class: ['btn', 'btn-mini']
-  =link_to "Add round", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-mini']
+  =link_to "ტურის დამატება", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-mini']
 
   -@season.rounds.each do |round|
     %a{name: "round-#{round.id}"}
     .round
       %h4
-        ="Round ##{round.number} Games - #{round.games.count}/10"
+        ="ტური ##{round.number} თამაშები - #{round.games.count}/10"
 
       %table.games-table.table
         %tbody
@@ -40,15 +40,15 @@
 
               %td.actions
                 [
-                =link_to 'Edit', edit_game_path(game)
+                =link_to 'შეცვლა', edit_game_path(game)
                 ][
-                =link_to 'Delete', game, :method => :delete, :confirm => 'Are you sure?'
+                =link_to 'x', game, :method => :delete, :confirm => 'Are you sure?'
                 ]
 
       .ctrl
-        =link_to "Add game", new_round_game_path(round), class: ['btn', 'btn-primary'] if round.games.count < 10
-        =link_to "Edit round", edit_round_path(round), class: ['btn', 'btn-warning']
-        =link_to "Delete round", round, :method => :delete, confirm: 'Are you sure?', class: ['btn', 'btn-danger']
+        =link_to "თამაშის დამატება", new_round_game_path(round), class: ['btn', 'btn-primary'] if round.games.count < 10
+        -#=link_to "ტურის შეცვლა", edit_round_path(round), class: ['btn', 'btn-warning']
+        =link_to "ტურის წაშლა", round, :method => :delete, confirm: 'Are you sure?', class: ['btn', 'btn-danger']
 
   .ctrl
-    =link_to "Add round", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-large']
+    =link_to "ტურის დამატება", season_rounds_path(@season), :method => :post, class: ['btn', 'btn-primary', 'btn-large']
