@@ -1,0 +1,23 @@
+%h1
+  Users
+  %small
+    Total:
+    =@users.count
+
+.users-list
+  -@users.desc(:created_at).each do |user|
+    %div{class: user.admin ? %w(admin user) : %w(regular user)}
+      .image
+        =image_tag user.image
+      .info
+        .name
+          =user.first_name
+          =user.last_name
+        .email
+          =user.email
+
+        .created_at
+          =format_date_time(user.created_at)
+
+      .clearfix
+  .clearfix

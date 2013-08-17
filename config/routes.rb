@@ -6,7 +6,7 @@ Balltracker::Application.routes.draw do
   get '/auth/failure', :to => 'sessions#auth_failure'
   delete '/signout', :to => 'sessions#destroy'
 
-  #resources :users
+  resources :users, :only => [:index]
   resources :posts do
     resources :comments, :only => [:index, :create, :update, :destroy]
   end

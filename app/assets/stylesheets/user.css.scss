@@ -23,3 +23,42 @@
     font: $small-font;
   }
 }
+
+.users-list {
+  .user {
+    border-radius: $item-boreder-radius;
+    margin: 6px;
+
+    &.admin {
+      background-color: #D9DBFF;
+    }
+
+    &.regular {
+      background-color: #f6f6f6;
+    }
+
+    float: left;
+    width: 250px;
+    //height: 100px;
+    padding: 6px;
+
+    .image {
+      float: left;
+    }
+
+    .info {
+      //display: inline-block;
+      margin-left: 56px;
+
+      font: $small-font;
+
+      .name {
+        font: 0.9/1em;
+      }
+
+      .created_at {
+        color: #5b5b5b
+      }
+    }
+  }
+}
