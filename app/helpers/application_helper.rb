@@ -47,5 +47,3 @@ module ApplicationHelper
     @current_season ||= Season.last
   end
 end
-
-puts "Hello wordl"
