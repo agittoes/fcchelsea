@@ -22,3 +22,38 @@
     }
   }
 }
+
+.season-result-table {
+  thead {
+    tr {
+      font-weight: bold;
+      color: $block-color;
+
+      background-color: $block-shadow-color;
+    }
+  }  
+
+  tbody {
+    tr.inactive {
+      color: $color6;
+    } 
+
+    tr.active {
+      .team {
+
+      }   
+
+      .wins, .scored {
+        background-color: #DDFFDD;
+      }
+
+      .loses, .against {
+        background-color: #FFDDDD;
+      }
+
+      .points {
+        background-color: #DDDDFF;
+      }
+    }
+  }
+}

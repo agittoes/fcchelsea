@@ -19,5 +19,5 @@ class SeasonResult
     self.scored_goals - self.against_goals
   end
 
-  index(points: -1)
+  index(points: -1, scored_goals: -1)
 end
