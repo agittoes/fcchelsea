@@ -8,6 +8,7 @@ class SeasonResult
 
   field :scored_goals, type: Integer, :default => 0
   field :against_goals, type: Integer, :default => 0
+  field :scored_against_diff, type: Integer, :default => 0
 
   field :wins, type: Integer, :default => 0
   field :loses, type: Integer, :default => 0
@@ -19,5 +20,5 @@ class SeasonResult
     self.scored_goals - self.against_goals
   end
 
-  index(points: -1, scored_goals: -1, games: -1)
+  index(points: -1, scored_against_diff: -1, games: -1)
 end

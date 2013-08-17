@@ -27,6 +27,7 @@ class Season
 
         scored_goals: 0,
         against_goals: 0,
+        scored_against_diff: 0,
 
         wins: 0,
         loses: 0,
@@ -45,9 +46,11 @@ class Season
 
         results[g.home_team.id][:scored_goals] += g.home_goals_number
         results[g.home_team.id][:against_goals] += g.visitor_goals_number
+        results[g.home_team.id][:scored_against_diff] = g.home_goals_number - g.visitor_goals_number
 
         results[g.visitor_team.id][:scored_goals] += g.visitor_goals_number
         results[g.visitor_team.id][:against_goals] += g.home_goals_number
+        results[g.visitor_team.id][:scored_against_diff] = g.visitor_goals_number - g.home_goals_number
 
 
         if g.home_goals_number == g.visitor_goals_number
