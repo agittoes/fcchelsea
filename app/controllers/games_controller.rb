@@ -23,8 +23,6 @@ class GamesController < ApplicationController
     @game.round = @round if round_specified?
 
     if @game.save
-      @game.round.season.calculate_results if round_specified?
-
       redirect_to round_specified? ? season_url(@round.season)+"#game-#{@game.id}" : @game
     else
       # TODO : Teams not supplied !
@@ -36,7 +34,6 @@ class GamesController < ApplicationController
     @game.assign_attributes(game_params)
 
     if @game.save
-      @game.round.season.calculate_results if @game.round
       redirect_to @game.round ? season_url(@game.round.season)+"#game-#{@game.id}" : @game
     else
       # TODO : Teams not supplied !
@@ -46,11 +43,11 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find(params[:id])
-    season = g.round ? g.round.season : nil
+    season = game.round ? game.round.season : nil
 
     game.destroy
 
-    season.calculate_results if season
+    redirect_to season ? season : request.refferer
   end
 
   private

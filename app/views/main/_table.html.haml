@@ -10,7 +10,7 @@
       %td Against
       %td Points
   %tbody
-    -current_season.results.each do |r|
+    -current_season.results(points: -1).each do |r|
       %tr
         %td
           =r.team.title

@@ -36,4 +36,21 @@ class Game
     self.begin_date = dt.to_time
     self.end_date = self.begin_date + 2.hours
   end
+
+  before_save :recalculate_season_results
+  around_destroy :recalculate_season_results
+
+  private
+
+  def recalculate_season_results
+    return unless self.round
+    
+    if block_given?
+      season_id = self.round.season_id
+      yield
+      Season.find(season_id).calculate_results
+    else
+      self.round.season.calculate_results
+    end
+  end
 end

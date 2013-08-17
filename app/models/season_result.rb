@@ -18,4 +18,6 @@ class SeasonResult
   def goals_diff
     self.scored_goals - self.against_goals
   end
+
+  index(points: -1)
 end
