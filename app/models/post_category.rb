@@ -26,6 +26,6 @@ class PostCategory
   private
 
   def key_if_exeists
-    self.key = new_key unless self.new_key.empty?
+    self.key = new_key unless self.new_key && self.new_key.empty?
   end
 end
