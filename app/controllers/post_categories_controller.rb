@@ -31,7 +31,7 @@ class PostCategoriesController < ApplicationController
   private
 
   def post_category_params
-    params.require(:post_category).permit(:key, :title, :parent_id)
+    params.require(:post_category).permit(:new_key, :title, :parent_id)
   end
 
   def target_post_category_required

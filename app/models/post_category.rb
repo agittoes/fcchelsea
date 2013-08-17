@@ -1,6 +1,8 @@
 class PostCategory
   include Mongoid::Document
 
+  attr_accessor :new_key
+
   field :key, type: String
   field :title, type: String
 
@@ -11,7 +13,7 @@ class PostCategory
 
   index({key: 1}, {sparse: true, unique: true})
 
-  before_save :unset_key_if_empty
+  before_save :key_if_exeists
 
   def self.parent
     self.where(:parent => nil)
@@ -23,7 +25,7 @@ class PostCategory
 
   private
 
-  def unset_key_if_empty
-    self.key = nil if !self.key || self.key.empty?
+  def key_if_exeists
+    self.key = new_key unless self.new_key.empty?
   end
 end

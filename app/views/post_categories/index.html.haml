@@ -27,7 +27,7 @@
   .category-form.form.form-inline
     =form_for @post_category do |f|
       =f.select :parent_id, @post_categories.collect {|parent| [parent.title, parent.id] }, {include_blank: '(Parentless)'}
-      =f.text_field :key, placeholder: 'Key'
-      =f.text_field :title, placeholder: 'Title'
+      =f.text_field :new_key, placeholder: 'გასაღები'
+      =f.text_field :title, placeholder: 'სათაური'
       =f.submit class: ['btn', 'btn-primary']
 
