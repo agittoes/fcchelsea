@@ -13,7 +13,7 @@ class PostCategory
 
   index({key: 1}, {sparse: true, unique: true})
 
-  before_save :key_if_exeists
+  before_save :key_if_exists
 
   def self.parent
     self.where(:parent => nil)
@@ -25,7 +25,7 @@ class PostCategory
 
   private
 
-  def key_if_exeists
+  def key_if_exists
     self.key = new_key unless self.new_key && self.new_key.empty?
   end
 end

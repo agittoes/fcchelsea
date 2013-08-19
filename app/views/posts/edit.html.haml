@@ -13,8 +13,8 @@
         =f.label :title, 'სათაური'
         =f.text_field :title
 
-        =f.label :key,'გასაღები (არაა სავალდებულო)'
-        =f.text_field :key
+        =f.label :new_key,'გასაღები (არაა სავალდებულო)'
+        =f.text_field :new_key
 
         =f.label :post_category, 'კატეგორია'
         =f.grouped_collection_select :post_category_id, post_categories.select {|c| c.children.exists? }, :children, :title, :id, :title

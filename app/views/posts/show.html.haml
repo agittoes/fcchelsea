@@ -3,7 +3,8 @@
   %meta{:content => 'article', :property => "og:type"}/
   %meta{:content => post_url(@post), :property => "og:url"}/
   %meta{:content => @post.title, :property => "og:title"}/
-  %meta{:content => root_url + @post.image.url, :property => "og:image"}/
+  -if @post.image.url
+    %meta{:content => root_url + @post.image.url, :property => "og:image"}/
 
 .row-fluid
   .span8

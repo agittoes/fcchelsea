@@ -72,7 +72,7 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(
         :post_category_id,
-        :key,
+        :new_key,
         :title,
         :text,
         :image,

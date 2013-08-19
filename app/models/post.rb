@@ -2,6 +2,8 @@ class Post
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  attr_accessor :new_key
+
   belongs_to :post_category, :inverse_of => :posts, :autosave => true
   field :key, type: String
   field :title, type: String
@@ -14,7 +16,7 @@ class Post
   index({key: 1}, {sparse: true, unique: true})
   index({created_at: -1})
 
-  before_save :unset_key_if_empty
+  before_save :key_if_exists
   around_destroy :remove_folder
 
   def html
@@ -51,8 +53,9 @@ class Post
     FileUtils.remove_dir(store_dir, :force => true)
   end
 
-  def unset_key_if_empty
-    self.key = nil if !self.key || self.key.empty?
+
+  def key_if_exists
+    self.key = new_key unless self.new_key && self.new_key.empty?
   end
 
 end
