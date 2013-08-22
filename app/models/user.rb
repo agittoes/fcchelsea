@@ -18,7 +18,8 @@ class User
   field :last_oauth_provider, type: String
 
   def self.oauth(auth)
-    user = User.find_or_create_by :email => auth.info.email
+    email = User.normalize_email(auth)
+    user = User.find_or_create_by :email => email
     user.update_oauth_info(auth)
 
     return user
@@ -56,4 +57,14 @@ class User
   def nick
     self.nickname || "#{self.first_name} #{self.last_name}"
   end
+
+  def self.normalize_email(auth)
+    if auth.info.email
+      auth.info.email
+    else
+      "#{auth.uid}@#{auth.provider}"
+    end
+  end
+        
+
 end
