@@ -6,4 +6,6 @@ class Comment
   belongs_to :user
 
   field :text, type: String
+
+  validates :text, length: {minimum: 10, maximum: 1024}
 end
