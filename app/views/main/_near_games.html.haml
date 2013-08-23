@@ -1,0 +1,39 @@
+%h3 მომდევნო მატჩი
+.near_games
+  .row-fluid
+    .span4.home_team
+      .image
+        =image_tag next_chelsea_game.home_team.image.url
+      .title
+        =next_chelsea_game.home_team.title
+    .span4.score
+      VS
+      .date
+        =format_date(next_chelsea_game.begin_date)
+
+
+    .span4.visitor_team
+      .image
+        =image_tag next_chelsea_game.visitor_team.image.url
+      .title
+        =next_chelsea_game.visitor_team.title
+
+%h3 უკანასკნელი მატჩი
+.near_games
+  .row-fluid
+    .span4.home_team
+      .image
+        =image_tag last_chelsea_game.home_team.image.url
+      .title
+        =last_chelsea_game.home_team.title
+    .span4.score
+      ="#{last_chelsea_game.home_goals_number}:#{last_chelsea_game.visitor_goals_number}"
+      .date
+        =format_date(last_chelsea_game.begin_date)
+
+
+    .span4.visitor_team
+      .image
+        =image_tag last_chelsea_game.visitor_team.image.url
+      .title
+        =last_chelsea_game.visitor_team.title

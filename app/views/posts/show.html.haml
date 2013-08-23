@@ -38,7 +38,7 @@
       -if @post.allow_comments?
         .comment-block
           %h3
-            კომენტარიები
+            კომენტარები
           -unless user_signed_in?
             %p იმისათვის , რომ დატოვოთ კომენტარი გთხოვთ გაიაროთ ავტორიზაცია (გთხოვთ დააჭიროთ ქვევით მითითებულ ღილაკს)
             =render 'layouts/social_login'

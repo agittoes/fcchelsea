@@ -13,4 +13,18 @@ module MainHelper
 
     posts
   end
+
+  def chelsea_team
+    @chelsea_team ||= Team.find('chelsea')
+  end
+
+  def next_chelsea_game
+    @next_chelsea_game ||= chelsea_team.games.gt(begin_date: Time.now).order_by(begin_date: -1).limit(1)[0]
+  end
+
+  def last_chelsea_game
+    @last_chelsea_game ||= chelsea_team.games.lt(end_date: Time.now).order_by(begin_date: -1).limit(1)[0]
+  end
+
+
 end
