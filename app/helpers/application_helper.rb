@@ -44,6 +44,6 @@ module ApplicationHelper
 
 
   def current_season
-    @current_season ||= Season.last
+    @current_season ||= Season.find('PL_13-14')
   end
 end

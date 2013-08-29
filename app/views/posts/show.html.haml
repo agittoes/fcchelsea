@@ -51,3 +51,22 @@
 
             -if user_signed_in?
               =render 'comments/form', :object => @post
+  .span4.sidebar
+    .last-posts
+      %h3
+        =@post.post_category.title
+      -@post.post_category.posts.desc(:created_at).limit(10).each do |post|
+        .post
+          .title
+            =link_to post.title, post
+          .content
+            .image
+              =link_to post do
+                =image_tag post.image.url(:sidebar)
+            .text
+              =post.intro
+              %br/
+              =link_to '(სრულად წაკითხვა)', post
+            .clearfix
+          .date
+            =format_date(post.created_at)

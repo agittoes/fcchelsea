@@ -19,7 +19,7 @@ module MainHelper
   end
 
   def next_chelsea_game
-    @next_chelsea_game ||= chelsea_team.games.gt(begin_date: Time.now).order_by(begin_date: -1).limit(1)[0]
+    @next_chelsea_game ||= chelsea_team.games.gt(begin_date: Time.now).order_by(begin_date: 1).limit(1)[0]
   end
 
   def last_chelsea_game

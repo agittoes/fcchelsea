@@ -8,7 +8,7 @@
         =t('page.title.feed')
 
     .posts-list
-      -@posts.each do |post|
+      -@posts.desc(:created_at).each do |post|
         .post
           .title
             =link_to post.title, post_path_ex(post)
